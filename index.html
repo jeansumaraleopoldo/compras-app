@@ -9,44 +9,91 @@
   <script src="node_modules/angular/angular.js"></script>
   <script src="node_modules/angular-resource/angular-resource.js"></script>
   <script src="src/module.js"></script>
+  <script src="src/services/lista/service.js"></script>
   <script src="src/services/produto/service.js"></script>
   <script src="src/controllers/produto/controller.js"></script>
 </head>
 <body>
 <div class="container" ng-controller="ProdutoController as vm">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card bg-default">
         <div class="card-header">
-          Cadastro de produto
+          Cadastro de lista
+          <button class="btn btn-info float-right"
+                  ng-click="vm.adicionarProduto()">Adicionar nova lista
+          </button>
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="nome" class="control-label">Nome do produto:</label>
-                <input type="text" class="form-control" name="nome" id="nome">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="valor" class="control-label">Valor do produto:</label>
-                <input type="text" class="form-control" name="valor" id="valor">
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="imagem" class="control-label">Imagem do produto:</label>
-                <input type="text" class="form-control" name="imagem" id="imagem">
-              </div>
-            </div>
-          </div>
-        </div>
+        <form name="formCadastro">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th width="300">Produto</th>
+              <th width="190">Valor do produto</th>
+              <th width="30">Quantidade</th>
+              <th>Valor total</th>
+              <th>Opções</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><select name="nome_produto" id="nome_produto"
+                          class="form-control"
+                          ng-options="produto as produto.nome for produto in vm.produtos"
+                          ng-model="vm.produtoAdicionar.produto">
+              </select></td>
+              <td>{{ vm.produtoAdicionar.produto.valor | currency: 'R$' }}</td>
+              <td><input type="text" class="form-control" ng-model="vm.produtoAdicionar.quantidade" required></td>
+              <td>
+                <span ng-if="vm.produtoAdicionar.produto.valor && vm.produtoAdicionar.quantidade">
+                  {{ vm.produtoAdicionar.produto.valor * vm.produtoAdicionar.quantidade | currency: 'R$' }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-success" ng-disabled="formCadastro.$invalid" ng-click="vm.salvar()">Salvar</button>
+              </td>
+            </tr>
+            <tr ng-repeat="produto in vm.produtosPendentes">
+              <td>{{ produto.produto.nome }}</td>
+              <td>{{ produto.produto.valor | currency:'R$' }}</td>
+              <td>{{ produto.quantidade }}</td>
+              <td>{{ produto.valorTotal | currency:'R$' }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </form>
         <div class="card-footer">
-          <button class="btn btn-success">Salvar</button>
+          <button class="btn btn-success" ng-click="vm.finalizarLista()">Finalizar lista</button>
           <button class="btn btn-danger">Cancelar</button>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome do produto</th>
+          <th>Valor do produto</th>
+          <th>Imagem do produto</th>
+          <th>Opções</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="produto in vm.produtos">
+          <th scope="row">{{ produto.id }}</th>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.valor }}</td>
+          <td><img src="{{ produto.imagem }}" width="32"></td>
+          <td>
+            <button class="btn btn-sm btn-default">Editar</button>
+            <button class="btn btn-sm btn-danger">Excluir</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
