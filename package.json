@@ -1,0 +1,17 @@
+{
+  "name": "Produtos",
+  "version": "1.0.0",
+  "description": "Lista de produtos",
+  "main": "src/module.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "angular": "^1.6.7",
+    "angular-resource": "^1.6.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

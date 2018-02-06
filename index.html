@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Betha compras</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="env.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-resource/angular-resource.js"></script>
+  <script src="src/module.js"></script>
+  <script src="src/services/produto/service.js"></script>
+  <script src="src/controllers/produto/controller.js"></script>
+</head>
+<body>
+<div class="container" ng-controller="ProdutoController as vm">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card bg-default">
+        <div class="card-header">
+          Cadastro de produto
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nome" class="control-label">Nome do produto:</label>
+                <input type="text" class="form-control" name="nome" id="nome">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="valor" class="control-label">Valor do produto:</label>
+                <input type="text" class="form-control" name="valor" id="valor">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="imagem" class="control-label">Imagem do produto:</label>
+                <input type="text" class="form-control" name="imagem" id="imagem">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-success">Salvar</button>
+          <button class="btn btn-danger">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
