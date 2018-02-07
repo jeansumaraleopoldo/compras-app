@@ -4,9 +4,14 @@
   "description": "Lista de produtos",
   "main": "src/module.js",
   "dependencies": {
-    "bootstrap": "^4.0.0",
     "angular": "^1.6.7",
-    "angular-resource": "^1.6.9"
+    "angular-animate": "^1.6.9",
+    "angular-input-masks": "^4.1.0",
+    "angular-modal-service": "^0.13.0",
+    "angular-resource": "^1.6.9",
+    "angularjs-toaster": "^2.2.0",
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
   },
   "devDependencies": {},
   "scripts": {

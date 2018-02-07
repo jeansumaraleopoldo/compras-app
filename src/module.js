@@ -1,3 +1,7 @@
 var app = angular.module('app', [
-    'ngResource'
+    'ngAnimate',
+    'ui.utils.masks',
+    'toaster',
+    'ngResource',
+    'angularModalService'
 ]);

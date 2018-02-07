@@ -4,11 +4,16 @@
     listaService.$inject = ['$resource'];
 
     function listaService($resource) {
-        var api = $resource(API_URL + '/v1/lista/:id', {id: '@id'});
+        var api = $resource(API_URL + '/v1/listas/:id', {id: '@id'});
 
         return {
+            buscarListas: buscarListas,
             salvarLista: salvarLista
         };
+
+        function buscarListas() {
+            return api.query().$promise;
+        }
 
         function salvarLista(dados) {
             var lista = new api();

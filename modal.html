@@ -1,0 +1,36 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Lista {{ lista.id }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th width="300">Produto</th>
+            <th width="190">Valor do produto</th>
+            <th width="30">Quantidade</th>
+            <th>Valor total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="produto in lista.produtos">
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.valor | currency:'R$' }}</td>
+            <td>{{ produto.quantidade }}</td>
+            <td>{{ produto.valor * produto.quantidade | currency:'R$' }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <h4 class="mt-2">O valor total da lista é de: {{ valorTotal() | currency: 'R$'}}</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

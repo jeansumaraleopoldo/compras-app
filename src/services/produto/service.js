@@ -7,8 +7,13 @@
         var api = $resource(API_URL + '/v1/produtos/:id', {id: '@id'});
 
         return {
-            getProdutos: getProdutos
+            criarResource : criarResource,
+            buscarProdutos: getProdutos
         };
+
+        function criarResource() {
+            return new api();
+        }
 
         function getProdutos() {
             return api.query().$promise;
